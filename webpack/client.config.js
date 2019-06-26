@@ -16,6 +16,7 @@ export default {
   target: 'web', // tells webpack that this build will be run in browsers
   output: {
     filename: ifDev('[name].js','[name].[hash].js'),
+    publicPath: `http://localhost:${process.env.CLIENT_PORT}/`,
     path: path.resolve(__dirname, '../dist/client'),
   },
   module: {
@@ -59,9 +60,9 @@ export default {
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
-        vendors: {
+        vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
+          name: 'vendor',
           enforce: true,
           chunks: 'all'
         },

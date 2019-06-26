@@ -12,10 +12,7 @@ const developmentPlugins = () => {
     // need to lazy load this plugin
     const StartServerPlugin = require('start-server-webpack-plugin');
 
-    return [
-      new StartServerPlugin('server.js'),
-      new webpack.HotModuleReplacementPlugin(),
-    ];
+    return [new StartServerPlugin('server.js'), new webpack.HotModuleReplacementPlugin()];
   }
 
   return [];
@@ -23,15 +20,36 @@ const developmentPlugins = () => {
 
 export default {
   entry: {
-    server: ifDev('./src/server/index.dev.js', './src/server/index.js'),
+    server: [
+      ifDev('webpack/hot/poll?1000'),
+      ifDev('./src/server/index.dev.js', './src/server/index.js'),
+    ].filter(Boolean),
   },
   target: 'node', // tells webpack that this build will be run in node env
   output: {
     filename: ifDev('[name].js', '[name].[hash].js'),
     path: path.resolve(__dirname, '../dist/server'),
   },
+  watchOptions: {
+    aggregateTimeout: 300,
+    ignored: /node_modules/,
+    poll: 1000,
+  },
   module: sharedModule,
-  externals: [nodeExternals()],
+  externals: [
+    /**
+     * Ignore node_modules being bundled
+     * on server build
+     */
+    nodeExternals({
+      whitelist: [
+        ...ifDev(['webpack/hot/poll?1000'], []),
+        'source-map-support/register',
+        /\.(svg|png|jpg|jpeg|gif|ico)$/,
+        /\.(css|scss|sass|sss|less)$/,
+      ],
+    }),
+  ],
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   plugins: [
     new webpack.DefinePlugin({
@@ -42,5 +60,5 @@ export default {
     }),
     ...sharedPlugins,
     ...developmentPlugins(),
-  ].filter(Boolean)
+  ].filter(Boolean),
 };

@@ -8,8 +8,6 @@
     "build": "yarn build:server && yarn build:client",
     "build:server": "bnr build:server",
     "build:client": "bnr build:client",
-    "test:client": "jest ./src/client",
-    "test:server": "jest ./src/server",
     "dev:client": "bnr dev:client",
     "dev:server": "bnr dev:server",
     "stats": "NODE_ENV=production webpack --config ./webpack/client.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public"

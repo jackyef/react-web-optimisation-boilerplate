@@ -2,6 +2,10 @@ require('dotenv').config();
 
 const renderer = async (ctx, next) => {
   console.log('Incoming request for url', ctx.url);
+  /**
+   * implement SSR later here.
+   * For now it's just serving generic HTML that include script tags for main bundles (client and vendor)
+   */
 
   ctx.set('content-type', 'text/html');
   ctx.body = `

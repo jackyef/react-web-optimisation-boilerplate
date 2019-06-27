@@ -1,14 +1,25 @@
-import styled from 'react-emotion';
+import { css } from 'react-emotion';
 
-export const HomeContainer = styled.div`
+export const homeContainer = css`
   display: flex;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background: #e0e0e0;
+  max-width: 100vw;
+  background: #fefefe;
+  padding: 16px;
   font-size: 24px;
-
+  
   img {
-    width: 32px;
+    width: 300px;
+    height: auto;
+  }
+
+  button {
+    background: #42b579;
+    color: white;
+    border-radius: 4px;
+    padding: 16px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
   }
 `;

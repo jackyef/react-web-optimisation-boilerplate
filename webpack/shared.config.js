@@ -8,13 +8,20 @@ module.exports = {
     strictExportPresence: true,
     rules: [
       { 
-        oneOf: [{
-          test: /\.jsx?$/, // regex that matches the files that this loader should be handling
-          exclude: /node_modules/,
-          loaders: 'babel-loader',
-          options: isServer ? babelConfig.server : babelConfig.client,
-        }],
-      }
+        oneOf: [
+          {
+            test: /\.jsx?$/, // regex that matches the files that this loader should be handling
+            exclude: /node_modules/,
+            loaders: 'babel-loader',
+            options: isServer ? babelConfig.server : babelConfig.client,
+          },
+        ],
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: ['graphql-tag/loader'],
+      },
     ],
   },
 

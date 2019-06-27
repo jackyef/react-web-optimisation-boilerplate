@@ -1,0 +1,32 @@
+query HomeQuery {
+  slides {
+    slides {
+      id
+      title
+      image_url
+      redirect_url
+    }
+  }
+  get_home_recommendation {
+    recommendation_tabs {
+      id
+      name
+      image_url
+    }
+    recommendation_product (recomID: 4) {
+      product {
+        name
+        url
+        image_url
+        rating
+        count_review
+        shop {
+          id
+          name
+          city
+        }
+        price
+      }
+    }
+  }
+}

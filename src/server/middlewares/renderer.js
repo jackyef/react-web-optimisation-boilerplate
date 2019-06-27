@@ -18,11 +18,19 @@ const renderer = async (ctx, next) => {
       <script>
         window.isSSR = false;
       </script>
-      <script defer src="http://localhost:${process.env.CLIENT_PORT}/client.js"></script>
-      <script defer src="http://localhost:${process.env.CLIENT_PORT}/vendor.js"></script>
-    </head>
-    <body>
-      <div id="root">This web-app need javascript to run.</div>
+      <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, Arial, sans-serif;
+        }
+      </style>
+      </head>
+      <body>
+      <div id="root"></div>
+      <noscript>This web-app need javascript to run.</noscript>
+      <script src="http://localhost:${process.env.CLIENT_PORT}/client.js"></script>
+      <script src="http://localhost:${process.env.CLIENT_PORT}/vendor.js"></script>
     </body>
     </html>
   `.trim();

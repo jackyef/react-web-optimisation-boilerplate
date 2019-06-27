@@ -1,12 +1,14 @@
 import React, { useContext, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { graphql } from 'react-apollo';
+
 import { GlobalContext } from '../../context/global';
+import topedThinking from './assets/toped-thinking.png';
+import HomeQuery from './queries/home-query.graphql';
 
-import homeImage from './assets/home-icon.svg';
+import { homeContainer } from './styles';
 
-import { HomeContainer } from './styles';
-
-const Home = () => {
+const Home = props => {
+  const { data } = props;
   const [globalState, globalDispatch] = useContext(GlobalContext);
   const { count } = globalState;
 
@@ -15,22 +17,31 @@ const Home = () => {
   }, [globalDispatch]);
 
   return (
-    <HomeContainer>
+    <div className={homeContainer}>
       <div>
-        This is Home.js
-        <img src={homeImage} />
-        <div>
-          <Link to={'/about'}>Go to about</Link>
-        </div>
-        <br />
-        Current counter value: {count}
-        <br />
+        <h1>Hello world!</h1>
+        <img src={topedThinking} />
+        
+        <h4>
+          Current counter value: {count}
+        </h4>
+        
         <button type="button" onClick={incrementCounter}>
           Click me to increase counter by 1
         </button>
+        <pre>
+          {JSON.stringify(data, null, 2)}
+        </pre>
       </div>
-    </HomeContainer>
+    </div>
   );
 };
 
-export default Home;
+const gqlOptions = {
+  options: {},
+  props: ({ data }) => ({
+    data,
+  }),
+};
+
+export default graphql(HomeQuery, gqlOptions)(Home);

@@ -23,6 +23,7 @@ module.exports = {
     'import/extensions': ['.js', '.jsx'],
   },
   rules: {
+    'react/display-name': 'off',
     'block-scoped-var': 2,
     curly: [2, 'all'],
     eqeqeq: 2,

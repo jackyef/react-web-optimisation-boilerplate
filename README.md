@@ -5,9 +5,9 @@ A template created to learn web performance optimisation
 ## Introduction
 `yarn dev:client` will run a server that serve static assets. The static assets will be requested by browsers.
 
-`yarn dev:server` will run a server that will generate the HTML document to the browser.
+`yarn dev:server` will run a frontend server that will generate the HTML document to the browser.
 
-// TODO: put image of the architecture here
+![image](https://user-images.githubusercontent.com/7252454/60248069-1562a180-98ec-11e9-904c-1447a7914b2a.png)
 
 ## Commands
 | Commands            | Purpose                                                        |

@@ -9,6 +9,27 @@ A template created to learn web performance optimisation
 
 ![image](https://user-images.githubusercontent.com/7252454/60248069-1562a180-98ec-11e9-904c-1447a7914b2a.png)
 
+## Instruction
+1. Install dependencies
+```
+yarn OR npm install
+```
+2. Setup .env file
+```
+cp .env.example .env
+```
+3. Run static assets server (this will be running on `localhost:3001`, configurable from .env file)
+```
+yarn dev:client
+```
+4. Run frontend server (this will be running on `localhost:3000`, configurable from .env file)
+```
+yarn dev:server
+```
+5. Go to `localhost:3000`, you should see stuffs.
+6. Play around! Look at `./src/client/routes/Home` for starter.
+
+
 ## Commands
 | Commands            | Purpose                                                        |
 |---------------------|----------------------------------------------------------------|

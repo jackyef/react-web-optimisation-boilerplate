@@ -22,7 +22,7 @@ const client = new ApolloClient({
   },
   cache: cache,
   link: new BatchHttpLink({
-    uri: 'https://2.m-staging.tokopedia.com/graphql', // url for your hosted graphql server
+    uri: 'https://24.staging-feature.tokopedia.com/graphql', // url for your hosted graphql server
   }),
 });
 

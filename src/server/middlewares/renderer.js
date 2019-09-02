@@ -14,6 +14,7 @@ const renderer = async (ctx, next) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="http://localhost:${process.env.CLIENT_PORT}/client.css" rel="stylesheet">
       <title>React Boilerplate</title>
       <script>
         window.isSSR = false;

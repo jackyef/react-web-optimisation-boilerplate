@@ -5,9 +5,13 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import postcssPresetEnv from 'postcss-preset-env';
 
 import { ifDev, isProd } from './build-utils';
 import { module as sharedModule, plugins as sharedPlugins } from './shared.config';
+
+const publicPath = `http://localhost:${process.env.CLIENT_PORT}/`;
 
 export default {
   entry: {
@@ -15,8 +19,9 @@ export default {
   },
   target: 'web', // tells webpack that this build will be run in browsers
   output: {
-    filename: ifDev('[name].js','[name].[hash].js'),
-    publicPath: `http://localhost:${process.env.CLIENT_PORT}/`,
+    // filename: ifDev('[name].js','[name].[hash].js'),
+    filename: '[name].js',
+    publicPath,
     path: path.resolve(__dirname, '../dist/client'),
   },
   module: {
@@ -37,9 +42,37 @@ export default {
                 }
               }
             },
-          }
+          },
         ]
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath,
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              onlyLocals: false,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [postcssPresetEnv({ stage: 2 })],
+            },
+          },
+        ]
+      }
     ],
   },
   plugins: [
@@ -47,6 +80,10 @@ export default {
     new CompressionPlugin(),
     new HtmlWebpackPlugin({ template: 'src/client/index.html' }),
     new webpack.HashedModuleIdsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
   optimization: {
     nodeEnv: ifDev('development', 'production'),

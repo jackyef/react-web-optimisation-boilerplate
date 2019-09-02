@@ -27,7 +27,7 @@ export default {
   },
   target: 'node', // tells webpack that this build will be run in node env
   output: {
-    filename: ifDev('[name].js', '[name].[hash].js'),
+    filename: '[name].js',
     path: path.resolve(__dirname, '../dist/server'),
   },
   watchOptions: {

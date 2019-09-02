@@ -6,7 +6,7 @@ import { GlobalContext } from '../../context/global';
 import topedThinking from './assets/toped-thinking.png';
 import HomeQuery from './queries/home-query.graphql';
 
-import { homeContainer } from './styles';
+import './styles.css';
 
 const Home = props => {
   const { slides, feedRecom } = props;
@@ -18,7 +18,7 @@ const Home = props => {
   }, [globalDispatch]);
 
   return (
-    <div className={homeContainer}>
+    <div className="homeContainer">
       <div>
         <h1>Hello world!</h1>
         <img src={topedThinking} />

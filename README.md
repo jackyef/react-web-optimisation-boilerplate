@@ -39,3 +39,18 @@ yarn dev:server
 | yarn build:server   | to build optimized server bundle                               |
 | yarn dev:server     | to start development server for the server renderer            |
 | yarn dev:client     | run webpack-dev-server with hot reload enabled for development | 
+
+
+## Goals for performance optimisation
+- React component profiling (runtime performance)
+Create a problematic react component. Show how to solve it from profiling, identifying where the problem lies, then fix it.
+- Lighthouse (show the initial score, explain about load performance)
+- Code splitting (prepare multi routes app, explain codesplitting)
+- Server Side Rendering (SSR)
+  - GraphQL SSR (with react-apollo)
+- CSS-in-JS SSR
+- React Helmet SEO
+- Browser Rendering Optimization
+- Webpack ?
+- Nodejs + React + React Router ?
+- Universal Redux ?

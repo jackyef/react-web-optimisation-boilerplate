@@ -4,7 +4,6 @@ export const homeContainer = css`
   display: flex;
   min-height: 100vh;
   max-width: 100vw;
-  background: #fefefe;
   padding: 16px;
   font-size: 24px;
   

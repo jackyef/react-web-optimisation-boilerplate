@@ -10,6 +10,8 @@
     "build:client": "bnr build:client",
     "dev:client": "bnr dev:client",
     "dev:server": "bnr dev:server",
+    "serve": "ecstatic ./dist/client -p 3001 -g",
+    "bs": "yarn build:client && yarn serve",
     "stats": "NODE_ENV=production webpack --config ./webpack/client.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public"
   },
   "betterScripts": {
@@ -72,6 +74,7 @@
     "better-npm-run": "^0.1.1",
     "compression": "^1.7.2",
     "dotenv": "^6.0.0",
+    "ecstatic": "^4.1.2",
     "emotion": "^9.2.3",
     "fs-extra": "^7.0.1",
     "graphql": "^14.4.0",

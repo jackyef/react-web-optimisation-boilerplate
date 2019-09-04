@@ -4,19 +4,24 @@ import { Route, Switch } from 'react-router';
 import { Router } from 'react-router-dom';
 
 import { HomeView } from './Home';
+import Header from '../components/Header';
+import './styles.css';
 
-const RouterProvider = ({ history }) => {
+const Routes = ({ history }) => {
   return (
     <Router history={history}>
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-      </Switch>
+      <>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+        </Switch>
+      </>
     </Router>
   );
 };
 
-RouterProvider.propTypes = {
+Routes.propTypes = {
   history: object.isRequired,
 };
 
-export default RouterProvider;
+export default Routes;

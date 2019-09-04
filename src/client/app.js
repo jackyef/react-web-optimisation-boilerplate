@@ -6,7 +6,7 @@ import { ApolloClient } from 'apollo-client';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import RouterProvider from './routes';
+import Routes from './routes';
 import ContextProvider from './context';
 
 const cache = new InMemoryCache({
@@ -30,7 +30,7 @@ const App = ({ history }) => {
   return (
     <ApolloProvider client={client}>
       <ContextProvider>
-        <RouterProvider history={history} />
+        <Routes history={history} />
       </ContextProvider>
     </ApolloProvider>
   );

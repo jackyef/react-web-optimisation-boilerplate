@@ -42,6 +42,8 @@ yarn dev:server
 
 
 ## Goals for performance optimisation
+- Prepare an example page to be optimised
+- Lazyloadimg image (runtime performance)
 - React component profiling (runtime performance)
 Create a problematic react component. Show how to solve it from profiling, identifying where the problem lies, then fix it.
 - Lighthouse (show the initial score, explain about load performance)

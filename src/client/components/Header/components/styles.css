@@ -1,0 +1,77 @@
+.categorySidebarContainer {
+  display: flex;
+  padding: 16px;
+  line-height: 1.2rem;
+  transition: 0.3s ease-out;
+  transform: translateX(-100vw);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  box-shadow: -8px -9px 16px 3px #333;
+  z-index: 20;
+  max-width: 70vw;
+}
+
+.overlay {
+  background: #333;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: 0.3s ease-out;
+  pointer-events: none;
+}
+
+.overlay-active {
+  opacity: 0.6;
+  pointer-events: auto;
+}
+
+.categorySidebarContainer.show {
+  transform: translateX(0);
+}
+
+.categorySidebarContainer .hidden {
+  display: none;
+}
+
+.categorySidebarContainer img {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+}
+
+.categorySidebarContainer .tabTitle {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+
+.categorySidebarContainer .tabTitle.active {
+  color: #42b579;
+}
+
+.categorySidebarContainer .subItemHeading {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.categorySidebarContainer .subItem2Heading {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.categorySidebarContainer .lowestItem {
+  font-size: 0.85rem;
+}

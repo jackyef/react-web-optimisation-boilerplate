@@ -1,5 +1,5 @@
 query HomeQuery {
-  slides {
+  slides (device: 1) {
     slides {
       id
       title

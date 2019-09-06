@@ -1,0 +1,13 @@
+.carouselContainer {
+  overflow-x: scroll;
+  padding: 32px 16px 16px;
+  white-space: nowrap;
+  width: calc(100vw - 32px);
+}
+
+.carouselContainer img {
+  display: inline-block;
+  border-radius: 8px;
+  width: calc(100vw - 64px);
+  margin-right: 16px;
+}

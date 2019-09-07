@@ -83,7 +83,7 @@ export default {
     new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css',
+      chunkFilename: '[name].css',
     }),
     process.env.ANALYZE ? new BundleAnalyzerPlugin() : null,
   ].filter(Boolean),

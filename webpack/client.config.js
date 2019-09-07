@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import postcssPresetEnv from 'postcss-preset-env';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { ifDev, isProd } from './build-utils';
 import { module as sharedModule, plugins as sharedPlugins } from './shared.config';
@@ -84,7 +85,8 @@ export default {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-  ],
+    process.env.ANALYZE ? new BundleAnalyzerPlugin() : null,
+  ].filter(Boolean),
   optimization: {
     nodeEnv: ifDev('development', 'production'),
     minimize: isProd,

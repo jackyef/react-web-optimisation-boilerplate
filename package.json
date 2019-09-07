@@ -12,9 +12,18 @@
     "dev:server": "bnr dev:server",
     "serve": "ecstatic ./dist/client -p 3001 -g",
     "bs": "yarn build:client && yarn serve",
-    "stats": "NODE_ENV=production webpack --config ./webpack/client.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public"
+    "analyze:client": "bnr analyze:client"
   },
   "betterScripts": {
+    "analyze:client": {
+      "command": "babel-node --max-old-space-size=4096 webpack/scripts/build",
+      "env": {
+        "DEBUG": "webpack*, build:*",
+        "DIR": "client",
+        "NODE_ENV": "production",
+        "ANALYZE": true
+      }
+    },
     "build:server": {
       "command": "babel-node --max-old-space-size=4096 webpack/scripts/build",
       "env": {

@@ -44,13 +44,16 @@ yarn dev:server
 ## Goals for performance optimisation
 - Prepare full page that has the following
   - Header with searchbar and category sidebar (done)
-  - Banner that occupies 50% of the page height (in progress)
-  - Add some static text to fill the rest of the above the fold part
-  - Add product list from search below the fold
-- Prepare an example page to be optimised
-- Lazyloadimg image (runtime performance) (prepare imagehold)
-- React component profiling (runtime performance)
-Create a problematic react component. Show how to solve it from profiling, identifying where the problem lies, then fix it.
+  - Banner that occupies 50% of the page height (done)
+  - Add some static text to fill the rest of the above the fold part (done)
+  - Add product list from search below the fold (done)
+
+vendor.js (89.29 KB)
+client.js (28.74 KB)
+
+- Lazyloadimg image (runtime performance) (prepare imageholder)
+- React component profiling (runtime performance) 
+  Show how to solve it from profiling, identifying where the problem lies, then fix it. 
 - Lighthouse (show the initial score, explain about load performance) done
 - Code splitting (prepare multi routes app, explain codesplitting)
 - Server Side Rendering (SSR)

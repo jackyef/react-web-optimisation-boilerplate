@@ -1,0 +1,19 @@
+query HomeQuery {
+  get_home_recommendation {
+    recommendation_product (recomID: 4) {
+      product {
+        name
+        url
+        image_url
+        rating
+        count_review
+        shop {
+          id
+          name
+          city
+        }
+        price
+      }
+    }
+  }
+}

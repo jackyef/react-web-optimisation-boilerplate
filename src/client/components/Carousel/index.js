@@ -1,11 +1,11 @@
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
+import { graphql } from 'react-apollo';
 
+import CarouselQuery from './queries/carousel-query.graphql';
 import './styles.css';
 
 const Carousel = ({ banners }) => {
-  console.log({ banners });
-
   return (
     <div className="carouselContainer">
       {banners.map(banner => {
@@ -23,4 +23,11 @@ Carousel.defaultProps = {
   banners: [],
 };
 
-export default Carousel;
+const gqlOptions = {
+  options: {},
+  props: ({ data }) => ({
+    banners: data?.slides?.slides || [],
+  }),
+};
+
+export default graphql(CarouselQuery, gqlOptions)(Carousel);

@@ -1,0 +1,10 @@
+query HomeQuery {
+  slides (device: 1) {
+    slides {
+      id
+      title
+      image_url
+      redirect_url
+    }
+  }
+}

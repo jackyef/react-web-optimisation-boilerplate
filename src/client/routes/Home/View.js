@@ -4,8 +4,6 @@ import Carousel from '../../components/Carousel';
 import IntroductionParagraphs from './components/IntroductionParagraphs';
 import useIntersect from '../../hooks/useIntersect';
 
-import './styles.css';
-
 import * as css from './styles.js';
 
 const FeedRecommendation = lazy(() =>

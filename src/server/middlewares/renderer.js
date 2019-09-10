@@ -60,7 +60,7 @@ const renderer = async (ctx, next) => {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>React Boilerplate</title>
       <script>
-        window.isSSR = false;
+        window.isSSR = true;
         window.__APOLLO_INITIAL_DATA__ = ${serialize(graphqlData)};
       </script>
       <style>

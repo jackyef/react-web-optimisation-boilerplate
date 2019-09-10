@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import CategorySidebar from './components/CategorySidebar';
-import Image from '../Image';
 
 import tokopediaImg from './assets/tokopedia.png';
 import categoryData from './mocks/categoryData';
@@ -64,7 +63,7 @@ const Header = () => {
   return (
     <>
       <div className={css.headerContainer}>
-        <Image className={css.headerContainerLogo} src={tokopediaImg} />
+        <img className={css.headerContainerLogo} src={tokopediaImg} />
         <div className={css.headerContainerCategoryItem} onClick={showSidebar}>Kategori</div>
         <div className={css.headerContainerSearchInputContainer}>
           <input type="text" value={state} placeholder="Cari barang di Tokopedia..." onChange={handleSearchChange} />

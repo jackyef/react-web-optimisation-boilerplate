@@ -85,6 +85,7 @@
     "dotenv": "^6.0.0",
     "ecstatic": "^4.1.2",
     "emotion": "^9.2.3",
+    "emotion-server": "9.2.12",
     "fs-extra": "^7.0.1",
     "graphql": "^14.4.0",
     "graphql-tag": "^2.10.1",
@@ -99,7 +100,8 @@
     "react-emotion": "^9.2.3",
     "react-loadable": "^5.4.0",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "unfetch": "^4.1.0"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",

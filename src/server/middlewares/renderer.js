@@ -40,7 +40,7 @@ const renderer = async (ctx, next) => {
   const app = (
     <ApolloProvider client={client}>
       <ContextProvider>
-        <StaticRouter>
+        <StaticRouter context={{}}>
           <Routes />
         </StaticRouter>
       </ContextProvider>

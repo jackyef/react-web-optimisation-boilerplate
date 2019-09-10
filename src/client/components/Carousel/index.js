@@ -9,8 +9,10 @@ import * as css from './styles';
 const Carousel = ({ banners }) => {
   return (
     <div className={css.carouselContainer}>
-      {banners.map(banner => {
-        return <Image key={banner.id} src={banner.image_url} alt={banner.title} />;
+      {banners.map((banner, index) => {
+        const ImgElement = index > 0 ? Image : 'img';
+        
+        return <ImgElement key={banner.id} src={banner.image_url} alt={banner.title} />;
       })} 
     </div>
   )

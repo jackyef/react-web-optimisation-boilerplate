@@ -1,11 +1,13 @@
 import React from 'react';
 import { arrayOf, object, bool, func } from 'prop-types';
 
-import './styles.css';
+import Image from '../../Image';
+
+import * as css from './styles';
 
 const CategorySidebar = ({ categoryData, display, onClose }) => {
-  const containerClasses = ['categorySidebarContainer', display ? 'show' : ''].join(' ');
-  const overlayClasses = ['overlay', display ? 'overlay-active' : ''].join(' ');
+  const containerClasses = [css.categorySidebarContainer, display ? 'show' : ''].join(' ');
+  const overlayClasses = [css.overlay, display ? css.overlayActive : ''].join(' ');
 
   console.log('do some heavy stuffs every render');
   for (let i = 0; i < 1000000; i ++ ) {
@@ -19,7 +21,7 @@ const CategorySidebar = ({ categoryData, display, onClose }) => {
           return (
             <div key={index}>
               <div
-                className="tabTitle"
+                className={css.tabTitle}
               >
                 {tab.tabTitle}
               </div>
@@ -28,17 +30,17 @@ const CategorySidebar = ({ categoryData, display, onClose }) => {
 
                 return (
                   <div key={i2}>
-                    <div className="subItemHeading">
-                      {subItem.imageUrl ? <img src={subItem.imageUrl} /> : null}
+                    <div className={css.subItemHeading}>
+                      {subItem.imageUrl ? <Image src={subItem.imageUrl} /> : null}
                       <SubItemElement>{subItem.text}</SubItemElement>
                     </div>
                     {subItem.list.map((subItem2, i3) => {
                       return (
                         <div key={i3}>
-                          <div className="subItem2Heading">{subItem2.text}</div>
+                          <div className={css.subItem2Heading}>{subItem2.text}</div>
                           {subItem2.list.map((lowestItem, i4) => {
                             return (
-                              <div key={i4} className="lowestItem">
+                              <div key={i4} className={css.lowestItem}>
                                 {lowestItem.text}
                               </div>
                             );

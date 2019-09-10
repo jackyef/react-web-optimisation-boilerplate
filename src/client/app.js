@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { Router } from 'react-router-dom';
 
 import Routes from './routes';
 import ContextProvider from './context';
@@ -20,7 +21,7 @@ const client = new ApolloClient({
     connectToDevTools: process.env.NODE_ENV !== 'production',
     queryDeduplication: true,
   },
-  cache: cache,
+  cache: window.__APOLLO_INITIAL_DATA__ ? cache.restore(window.__APOLLO_INITIAL_DATA__) : cache,
   link: new BatchHttpLink({
     uri: 'https://24.staging-feature.tokopedia.com/graphql', // url for your hosted graphql server
   }),
@@ -30,7 +31,9 @@ const App = ({ history }) => {
   return (
     <ApolloProvider client={client}>
       <ContextProvider>
-        <Routes history={history} />
+        <Router history={history}>
+          <Routes />
+        </Router>
       </ContextProvider>
     </ApolloProvider>
   );

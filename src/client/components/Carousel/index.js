@@ -4,11 +4,11 @@ import { graphql } from 'react-apollo';
 import Image from '../Image';
 
 import CarouselQuery from './queries/carousel-query.graphql';
-import './styles.css';
+import * as css from './styles';
 
 const Carousel = ({ banners }) => {
   return (
-    <div className="carouselContainer">
+    <div className={css.carouselContainer}>
       {banners.map(banner => {
         return <Image key={banner.id} src={banner.image_url} alt={banner.title} />;
       })} 

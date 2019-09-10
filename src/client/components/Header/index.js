@@ -4,7 +4,7 @@ import Image from '../Image';
 
 import tokopediaImg from './assets/tokopedia.png';
 import categoryData from './mocks/categoryData';
-import './styles.css';
+import * as css from './styles';
 
 const Header = () => {
   const [state, setState] = useState('');
@@ -63,10 +63,10 @@ const Header = () => {
 
   return (
     <>
-      <div className="headerContainer">
-        <Image className="headerContainer-Logo" src={tokopediaImg} />
-        <div className="headerContainer-CategoryItem" onClick={showSidebar}>Kategori</div>
-        <div className="headerContainer-SearchInputContainer">
+      <div className={css.headerContainer}>
+        <Image className={css.headerContainerLogo} src={tokopediaImg} />
+        <div className={css.headerContainerCategoryItem} onClick={showSidebar}>Kategori</div>
+        <div className={css.headerContainerSearchInputContainer}>
           <input type="text" value={state} placeholder="Cari barang di Tokopedia..." onChange={handleSearchChange} />
         </div>
       </div>

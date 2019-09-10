@@ -6,6 +6,8 @@ import useIntersect from '../../hooks/useIntersect';
 
 import './styles.css';
 
+import * as css from './styles.js';
+
 const FeedRecommendation = lazy(() =>
   import(/* webpackChunkName: "feed-recom" */ '../../components/FeedRecommendation')
 );
@@ -15,7 +17,7 @@ const Home = () => {
   const targetRef = useIntersect(() => setShowFeed(true), null, true);
 
   return (
-    <div className="homeContainer">
+    <div className={css.homeContainer}>
       <div>
         <Carousel />
         <IntroductionParagraphs />

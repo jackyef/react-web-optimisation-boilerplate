@@ -5,16 +5,16 @@ import Image from '../Image';
 
 import FeedQuery from './queries/feed-query.graphql';
 
-import './styles.css';
+import * as css from './styles';
 
 const FeedRecommendation = ({ feedRecom }) => {
   return (
-    <div className="feedContainer">
+    <div className={css.feedContainer}>
       <h1>Rekomendasi untuk Anda</h1>
-      <div className="feedProductsContainer">
+      <div className={css.feedProductsContainer}>
         {feedRecom?.map((product, index) => {
           return (
-            <div key={index} className="productCard">
+            <div key={index} className={css.productCard}>
               <Image src={product.image_url} />
               <p>{product.name}</p>
             </div>

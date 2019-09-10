@@ -5,7 +5,8 @@ import { Router } from 'react-router-dom';
 
 import { HomeView } from './Home';
 import Header from '../components/Header';
-import './styles.css';
+
+import './styles.js';
 
 const Routes = ({ history }) => {
   return (

@@ -21,7 +21,7 @@ const client = new ApolloClient({
     connectToDevTools: process.env.NODE_ENV !== 'production',
     queryDeduplication: true,
   },
-  cache: cache,
+  cache: window.__APOLLO_INITIAL_DATA__ ? cache.restore(window.__APOLLO_INITIAL_DATA__) : cache,
   link: new BatchHttpLink({
     uri: 'https://24.staging-feature.tokopedia.com/graphql', // url for your hosted graphql server
   }),

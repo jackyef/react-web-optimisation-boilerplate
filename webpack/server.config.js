@@ -50,7 +50,7 @@ export default {
             options: {
               name (_file) {
                 if (process.env.NODE_ENV === 'development') {
-                  return '[path][name].[ext]';
+                  return '[name].[ext]';
                 } else {
                   return '[hash].[ext]';
                 }

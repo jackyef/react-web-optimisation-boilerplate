@@ -7,6 +7,7 @@ import { ApolloClient } from 'apollo-client';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { StaticRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import fetch from 'node-fetch';
 import serialize from 'serialize-javascript';
 
@@ -14,16 +15,17 @@ import ContextProvider from '../../client/context';
 import Routes from '../../client/routes';
 
 // disable SSL authentication check
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 const renderer = async (ctx, next) => {
   console.log('Incoming request for url', ctx.url);
 
   const cache = new InMemoryCache({
-    dataIdFromObject: result => (result.id && result.__typename ? `${result.__typename}${result.id}` : result.id),
+    dataIdFromObject: result =>
+      result.id && result.__typename ? `${result.__typename}${result.id}` : result.id,
     addTypename: true,
   });
-  
+
   const client = new ApolloClient({
     ssrMode: false,
     options: {
@@ -36,20 +38,26 @@ const renderer = async (ctx, next) => {
       fetch: fetch,
     }),
   });
-  
+
+  const helmetContext = {};
+
   const app = (
     <ApolloProvider client={client}>
-      <ContextProvider>
-        <StaticRouter context={{}}>
-          <Routes />
-        </StaticRouter>
-      </ContextProvider>
+      <HelmetProvider context={helmetContext}>
+        <ContextProvider>
+          <StaticRouter context={{}}>
+            <Routes />
+          </StaticRouter>
+        </ContextProvider>
+      </HelmetProvider>
     </ApolloProvider>
-  )
+  );
 
   const renderedApp = renderStylesToString(await renderToStringWithData(app));
 
   const graphqlData = client.extract();
+
+  const helmet = helmetContext.helmet;
 
   ctx.set('content-type', 'text/html');
   ctx.body = `
@@ -58,7 +66,8 @@ const renderer = async (ctx, next) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>React Boilerplate</title>
+      ${helmet.meta.toString()}
+      ${helmet.title.toString()}
       <script>
         window.isSSR = true;
         window.__APOLLO_INITIAL_DATA__ = ${serialize(graphqlData)};
@@ -81,6 +90,6 @@ const renderer = async (ctx, next) => {
   `.trim();
 
   await next();
-}
+};
 
 export default renderer;

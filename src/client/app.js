@@ -6,12 +6,14 @@ import { ApolloClient } from 'apollo-client';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Router } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 import Routes from './routes';
 import ContextProvider from './context';
 
 const cache = new InMemoryCache({
-  dataIdFromObject: result => (result.id && result.__typename ? `${result.__typename}${result.id}` : result.id),
+  dataIdFromObject: result =>
+    result.id && result.__typename ? `${result.__typename}${result.id}` : result.id,
   addTypename: true,
 });
 
@@ -21,7 +23,9 @@ const client = new ApolloClient({
     connectToDevTools: process.env.NODE_ENV !== 'production',
     queryDeduplication: true,
   },
-  cache: window.__APOLLO_INITIAL_DATA__ ? cache.restore(window.__APOLLO_INITIAL_DATA__) : cache,
+  cache: window.__APOLLO_INITIAL_DATA__
+    ? cache.restore(window.__APOLLO_INITIAL_DATA__)
+    : cache,
   link: new BatchHttpLink({
     uri: 'https://24.staging-feature.tokopedia.com/graphql', // url for your hosted graphql server
   }),
@@ -30,11 +34,13 @@ const client = new ApolloClient({
 const App = ({ history }) => {
   return (
     <ApolloProvider client={client}>
-      <ContextProvider>
-        <Router history={history}>
-          <Routes />
-        </Router>
-      </ContextProvider>
+      <HelmetProvider>
+        <ContextProvider>
+          <Router history={history}>
+            <Routes />
+          </Router>
+        </ContextProvider>
+      </HelmetProvider>
     </ApolloProvider>
   );
 };

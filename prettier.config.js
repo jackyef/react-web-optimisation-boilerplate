@@ -5,5 +5,5 @@ module.exports = {
   eslintIntegration: true,
   tabWidth: 2, 
   bracketSpacing: true,
-  printWidth: 120,
+  printWidth: 90,
 }

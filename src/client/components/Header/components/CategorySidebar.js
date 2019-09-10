@@ -1,6 +1,8 @@
 import React from 'react';
 import { arrayOf, object, bool, func } from 'prop-types';
 
+import Image from '../../Image';
+
 import './styles.css';
 
 const CategorySidebar = ({ categoryData, display, onClose }) => {
@@ -29,7 +31,7 @@ const CategorySidebar = ({ categoryData, display, onClose }) => {
                 return (
                   <div key={i2}>
                     <div className="subItemHeading">
-                      {subItem.imageUrl ? <img src={subItem.imageUrl} /> : null}
+                      {subItem.imageUrl ? <Image src={subItem.imageUrl} /> : null}
                       <SubItemElement>{subItem.text}</SubItemElement>
                     </div>
                     {subItem.list.map((subItem2, i3) => {

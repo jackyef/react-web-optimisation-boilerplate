@@ -1,6 +1,7 @@
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
 import { graphql } from 'react-apollo';
+import Image from '../Image';
 
 import FeedQuery from './queries/feed-query.graphql';
 
@@ -14,7 +15,7 @@ const FeedRecommendation = ({ feedRecom }) => {
         {feedRecom?.map((product, index) => {
           return (
             <div key={index} className="productCard">
-              <img src={product.image_url} />
+              <Image src={product.image_url} />
               <p>{product.name}</p>
             </div>
           );

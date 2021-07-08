@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { Router } from 'react-router-dom';
 
 import Routes from './routes';
 import ContextProvider from './context';
@@ -30,7 +31,9 @@ const App = ({ history }) => {
   return (
     <ApolloProvider client={client}>
       <ContextProvider>
-        <Routes history={history} />
+        <Router history={history}>
+          <Routes />
+        </Router>
       </ContextProvider>
     </ApolloProvider>
   );

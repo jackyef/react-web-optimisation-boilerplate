@@ -41,6 +41,7 @@ const babelNodeEnvironment = {
         useBuiltIns: 'entry',
       },
     ],
+    ['@babel/preset-react', { development: isDev, useBuiltIns: true }],
   ],
   plugins: [
     'babel-plugin-macros',

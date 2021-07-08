@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './styles.css';
+import * as css from './styles.js';
 
 const IntroductionParagraphs = () => {
   return (
-    <div className="introParagraphsContainer">
+    <div className={css.introParagraphsContainer}>
       <h4>Tokopedia - Situs Jual Beli Online di Indonesia</h4>
       <p>
         Tokopedia merupakan situs jual beli online di Indonesia yang memiliki jutaan toko online dan menjual berbagai

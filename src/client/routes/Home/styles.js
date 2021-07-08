@@ -4,13 +4,7 @@ export const homeContainer = css`
   display: flex;
   min-height: 100vh;
   max-width: 100vw;
-  padding: 16px;
-  font-size: 24px;
-  
-  img {
-    width: 300px;
-    height: auto;
-  }
+  font-size: 1rem;
 
   button {
     background: #42b579;
